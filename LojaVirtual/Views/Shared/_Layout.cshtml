@@ -2,15 +2,16 @@
 
 <html lang="pt-br">
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 
     <meta name="description" content="Loja Virtual em ASP.NET">
-    <meta name="author" content="Elias Ribeiro">
+    <meta name="author" content="Mariana Antunes">
     <link rel="stylesheet" href="/resources/lib/bootstrap-4.2.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/lib/caroussel/carousel.css" />
     <link rel="stylesheet" href="/resources/lib/bootstrap-ecommerce-uikit/css/ui.css" />
-    <link rel="stylesheet" href="/resources/lib/bootstrap-ecommerce-uikit/css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+    <link rel="stylesheet" href="/resources/lib/bootstrap-ecommerce-uikit/css/responsive.css" media="only screen and (max-width: 1200px)" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
           crossorigin="anonymous">
 </head>
@@ -27,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -43,7 +44,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contato.html"><i class="far fa-address-book"></i> Contato </a>
+                        <a class="nav-link" href="/Home/Contato"><i class="far fa-address-book"></i> Contato </a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -52,8 +53,8 @@
 
                     <input class="form-control mr-sm-2" type="search" placeholder="palavra" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisa</button>
-                    <a class="nav-link" href="login.html"><i class="fas fa-user-alt"></i> Login</a>
-                    <a class="nav-link" href="carrinho.html"><i class="fas fa-shopping-cart"></i> Carrinho</a>
+                    <a class="nav-link" href="/Home/Login"><i class="fas fa-user-alt"></i> Login</a>
+                    <a class="nav-link" href="/Home/CarrinhoCompras"><i class="fas fa-shopping-cart"></i> Carrinho</a>
                 </form>
             </div>
         </nav>
