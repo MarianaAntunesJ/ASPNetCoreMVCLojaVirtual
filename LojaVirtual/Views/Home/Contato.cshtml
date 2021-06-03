@@ -46,7 +46,7 @@
 
                             @if (ViewData["MSG_E"] != null)
                             {
-                                <p class="alert alert-danger">@ViewData["MSG_E"]</p>
+                                <p class="alert alert-danger">@Html.Raw(@ViewData["MSG_E"])</p>
                             }
 
                             <form role="form" method="post" action="/Home/ContatoAcao">

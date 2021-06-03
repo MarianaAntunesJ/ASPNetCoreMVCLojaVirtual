@@ -48,7 +48,7 @@ namespace LojaVirtual.Controllers
                     var sb = new StringBuilder();
                     foreach (var texto in mensagens)
                     {
-                        sb.Append(texto.ErrorMessage);
+                        sb.Append($"{texto.ErrorMessage}<br />");
                     }
 
                     ViewData["MSG_E"] = sb.ToString();
