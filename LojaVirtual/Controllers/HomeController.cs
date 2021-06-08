@@ -1,4 +1,5 @@
-﻿using LojaVirtual.Libraries.Email;
+﻿using LojaVirtual.Database;
+using LojaVirtual.Libraries.Email;
 using LojaVirtual.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,10 +13,31 @@ namespace LojaVirtual.Controllers
 {
     public class HomeController : Controller
     {
+        private LojaVirtualContext _banco;
+
+        public HomeController(LojaVirtualContext banco) => _banco = banco;
+
+        [HttpGet]
         public IActionResult Index()
         {
-            var news = new NewsletterEmail() { Email = "teste@gmail.com" };
-            return View(news);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index([FromForm]NewsletterEmail newsletter)
+        {
+            if(ModelState.IsValid)
+            {
+                //Todo: adição no banco
+                _banco.NewsletterEmails.Add(newsletter);
+                _banco.SaveChanges();
+
+                TempData["MSG_S"] = "Email cadastrado. Agora você passará a receber nossas ofertas especiais em seu email!";
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+                return View();
         }
 
         public IActionResult Contato()
@@ -57,7 +79,7 @@ namespace LojaVirtual.Controllers
                 }
                 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 ViewData["MSG_E"] = "Opps! Tivemos um erro. Tente novamente mais tarde!";
 
