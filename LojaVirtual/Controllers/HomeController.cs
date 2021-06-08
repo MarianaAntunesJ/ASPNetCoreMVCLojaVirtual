@@ -28,7 +28,6 @@ namespace LojaVirtual.Controllers
         {
             if(ModelState.IsValid)
             {
-                //Todo: adição no banco
                 _banco.NewsletterEmails.Add(newsletter);
                 _banco.SaveChanges();
 
@@ -103,6 +102,16 @@ namespace LojaVirtual.Controllers
         [HttpPost]
         public IActionResult CadastroCliente([FromForm]Cliente cliente)
         {
+            if (ModelState.IsValid)
+            {
+                _banco.Add(cliente);
+                _banco.SaveChanges();
+
+                TempData["MSG_S"] = "Cadastro realizado com sucesso!";
+
+                //Todo: Implementar redirecionamentosa diferentes (painel, carrinho etc)
+                return RedirectToAction(nameof(CadastroCliente));
+            }
             return View();
         }
 
