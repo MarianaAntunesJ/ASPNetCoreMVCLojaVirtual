@@ -161,34 +161,34 @@
 
 
 
-@using (Html.BeginForm("index", "home", FormMethod.Post))
+@using (Html.BeginForm(null, null, null, FormMethod.Post, false, new { @action = @Url.Action("index", "home") + "#formulario" }))
 {
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 offset-sm-2">
-            @if (TempData["MSG_S"] != null)
-            {
-                <p class="alert alert-success">@TempData["MSG_S"]</p>
-            }
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 offset-sm-2">
-            <div class="form-group">
-                <label for="nome">Cadastre seu email para receber promoções:</label>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                    </div>
-                    @Html.EditorFor(_ => _.Email, new { htmlAttributes = new { @class = "form-control" } })
-                </div>
-                <span style="color: red;">@Html.ValidationMessageFor(_ => _.Email)</span>
+    <div class="container" id="formulario">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                @if (TempData["MSG_S"] != null)
+                {
+                    <p class="alert alert-success">@TempData["MSG_S"]</p>
+                }
             </div>
         </div>
-        <div class="col-sm-2">
-            <br />
-            <button class="subscribe btn btn-primary btn-block" type="submit"> Cadastrar </button>
+        <div class="row">
+            <div class="col-sm-6 offset-sm-2">
+                <div class="form-group">
+                    <label for="nome">Cadastre seu email para receber promoções:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        </div>
+                        @Html.EditorFor(_ => _.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <span style="color: red;">@Html.ValidationMessageFor(_ => _.Email)</span>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <br />
+                <button class="subscribe btn btn-primary btn-block" type="submit" style="margin-top: 9px"> Cadastrar </button>
+            </div>
         </div>
     </div>
-</div>
 }
