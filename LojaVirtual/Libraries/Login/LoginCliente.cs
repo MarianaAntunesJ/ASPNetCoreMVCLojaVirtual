@@ -24,10 +24,14 @@ namespace LojaVirtual.Libraries.Login
             _sessao.Cadastrar(Key, clienteJSONString);
         }
 
-        public Cliente Get(Cliente cliente)
+        public Cliente Get()
         {
-            var clienteJSONString = _sessao.Consultar(Key);
-            return JsonConvert.DeserializeObject<Cliente>(clienteJSONString);
+            if (_sessao.Existe(Key))
+            {
+                var clienteJSONString = _sessao.Consultar(Key);
+                return JsonConvert.DeserializeObject<Cliente>(clienteJSONString);
+            }
+            return null;
         }
 
         public void Logout()
