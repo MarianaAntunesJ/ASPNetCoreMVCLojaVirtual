@@ -8,12 +8,12 @@ namespace LojaVirtual.Repositories.Contracts
 {
     public interface IClienteRepository
     {
-        Cliente Login(string Email, string Senha);
+        Cliente Login(string email, string senha);
 
         void Cadastrar(Cliente cliente);
         void Atualizar(Cliente cliente);
-        void Excluir(int Id);
-        Cliente ObterCliente(int Id);
+        void Excluir(int id);
+        Cliente ObterCliente(int id);
         IEnumerable<Cliente> ObterTodosClientes();
     }
 }

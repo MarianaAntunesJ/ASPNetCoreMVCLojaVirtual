@@ -17,17 +17,17 @@ namespace LojaVirtual.Repositories
             _banco = banco;
         }
 
-        public void Atualizar(Cliente cliente)
-        {
-            _banco.Update(cliente);
-            _banco.SaveChanges();
-        }
-
         public void Cadastrar(Cliente cliente)
         {
             _banco.Add(cliente);
             _banco.SaveChanges();
         }
+
+        public void Atualizar(Cliente cliente)
+        {
+            _banco.Update(cliente);
+            _banco.SaveChanges();
+        }             
 
         public void Excluir(int id)
         {
@@ -35,8 +35,8 @@ namespace LojaVirtual.Repositories
             _banco.SaveChanges();
         }
 
-        public Cliente Login(string Email, string Senha)
-            => _banco.Clientes.Where(_ => _.Email == Email && _.Senha == Senha).FirstOrDefault();
+        public Cliente Login(string email, string senha)
+            => _banco.Clientes.Where(_ => _.Email == email && _.Senha == senha).FirstOrDefault();
 
         public Cliente ObterCliente(int id) => _banco.Clientes.Find(id);
 
