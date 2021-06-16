@@ -38,4 +38,8 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Colaborador\Models\" />
+  </ItemGroup>
+
 </Project>
