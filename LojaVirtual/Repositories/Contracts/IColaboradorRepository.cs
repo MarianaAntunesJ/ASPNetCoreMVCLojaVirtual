@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LojaVirtual.Repositories.Contracts
 {
-    interface IColaboradorRepository
+    public interface IColaboradorRepository
     {
         Colaborador Login(string email, string senha);
 
