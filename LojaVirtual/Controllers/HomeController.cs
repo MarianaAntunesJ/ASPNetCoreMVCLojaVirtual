@@ -32,7 +32,7 @@ namespace LojaVirtual.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index([FromForm]NewsletterEmail newsletter)
+        public IActionResult Index([FromForm]NewsletterEmail newsletter) //sobrecarga
         {
             if(ModelState.IsValid)
             {
@@ -40,10 +40,10 @@ namespace LojaVirtual.Controllers
 
                 TempData["MSG_S"] = "Email cadastrado. Agora você passará a receber nossas ofertas especiais em seu email!";
                 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); // Repassa para uma ação
             }
             else
-                return View();
+                return View(); // Mostra a tela
         }
 
         public IActionResult Contato()
@@ -57,19 +57,23 @@ namespace LojaVirtual.Controllers
             {
                 Contato contato = new Contato
                 {
+                   //propriedade do controller + a requisição + formulário enviado pelo usuário
                     Nome = HttpContext.Request.Form["nome"],
                     Email = HttpContext.Request.Form["email"],
                     Texto = HttpContext.Request.Form["texto"]
                 };
 
-                var mensagens = new List<ValidationResult>();
-                var contexto = new ValidationContext(contato);
+                var mensagens = new List<ValidationResult>(); // Lista de msg caso tenha erro
+                var contexto = new ValidationContext(contato); // Contexto de validação do objeto
                 bool isValid = Validator.TryValidateObject(contato, contexto, mensagens, true);
 
                 if (isValid)
                 {
                     ContatoEmail.EnviarContatoPorEmail(contato);
 
+                    //ViewData e ViewBag - enviam dados pra view
+                    // ViewData - acessa por dicionario (ex = chave e valor)
+                    // ViewBag - acessa por propriedade (ex = ViewBag.Nome)
                     ViewData["MSG_S"] = "Mensagem de contato enviado com sucesso";
                 }
                 else
@@ -140,6 +144,11 @@ namespace LojaVirtual.Controllers
 
                 _repositoryCliente.Cadastrar(cliente);
 
+                // TempData - armazena dados por um tempo
+                /* - Garante que mesmo que tenham sido feitas outras requisições,
+                   vc ainda possa acessar esses mesmos dados
+                   - Depois da leitura destes dados, eles são deletados.
+                  (pode-se usar o método .Keep para mantê-los)*/
                 TempData["MSG_S"] = "Cadastro realizado com sucesso!";
 
                 //Todo: Implementar redirecionamentosa diferentes (painel, carrinho etc)
